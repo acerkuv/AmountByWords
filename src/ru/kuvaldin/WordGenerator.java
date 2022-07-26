@@ -12,12 +12,13 @@ public class WordGenerator {
         keywordDataMaker.fillAllMaps();
         String [] WordsCollected = new String[5];
         int numPos = 0;
+        int dozen_thousands = 0;
         for (int digClass: amount){
             boolean isDozenTrue = (digClass % 10 == 0) ? true: false;
+            if (numPos==0)   dozen_thousands = digClass;
             switch (numPos){
                 case 0 ->  WordsCollected[numPos] = keywordDataMaker.getHundredsThousandsMap().get(digClass);
-
-                case 1 ->  WordsCollected[numPos] = //(digClass == 0)? "тысяч":
+                case 1 ->  WordsCollected[numPos] = (digClass == 0 & dozen_thousands != 0)? "тысяч":
                         (digClass < 20 )? keywordDataMaker.getThousandMap().get(digClass):
                         (isDozenTrue)? keywordDataMaker.getDozenMap().get(digClass/10) + " тысяч":
                         (digClass% 10 == 1)?
