@@ -17,7 +17,8 @@ public class WordGenerator {
             switch (numPos){
                 case 0 ->  WordsCollected[numPos] = keywordDataMaker.getHundredsThousandsMap().get(digClass);
 
-                case 1 ->  WordsCollected[numPos] =(digClass < 20)? keywordDataMaker.getThousandMap().get(digClass):
+                case 1 ->  WordsCollected[numPos] = //(digClass == 0)? "тысяч":
+                        (digClass < 20 )? keywordDataMaker.getThousandMap().get(digClass):
                         (isDozenTrue)? keywordDataMaker.getDozenMap().get(digClass/10) + " тысяч":
                         (digClass% 10 == 1)?
                             keywordDataMaker.getDozenMap().get(digClass/10) + " " +

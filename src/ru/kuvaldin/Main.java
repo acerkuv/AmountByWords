@@ -1,7 +1,6 @@
 package ru.kuvaldin;
 import ru.kuvaldin.test.TestMashine;
 
-import java.util.Arrays;
 
 
 public class Main {
