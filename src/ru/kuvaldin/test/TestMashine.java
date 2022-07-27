@@ -3,13 +3,14 @@ import ru.kuvaldin.*;
 
 
 public class TestMashine {
-   private   Transformmer transformmer = new Transformmer();
-   private WordGenerator wordGenerator1 = new WordGenerator();
+   private final TransFormer transformer = new TransFormer();
+   private final WordGenerator wordGenerator = new WordGenerator();
+   private final ConsoleInput consoleInput = new ConsoleInput();
 
    protected void check(String test, String answer){
-       String[] SharedInput = transformmer.AmountSegmentation(test);
-       int[] digAmount = transformmer.SharedAmountOnClass(SharedInput[0]);
-       String [] TestWordAnswer = wordGenerator1.wordCollectionMaker(digAmount, SharedInput[1]);
+       String[] SharedInput = transformer.AmountSegmentation(test);
+       int[] digAmount = transformer.SharedAmountOnClass(SharedInput[0]);
+       String [] TestWordAnswer = wordGenerator.wordCollectionMaker(digAmount, SharedInput[1]);
        String finalAnswer = clueFinalPhrase(TestWordAnswer);
 
        System.out.println("Ввод: " + answer);

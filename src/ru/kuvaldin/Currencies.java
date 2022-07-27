@@ -1,6 +1,5 @@
 package ru.kuvaldin;
 
-import java.util.Currency;
 
 public enum Currencies {
     USD(new String[] {"доллар", "доллара", "доларов"}),
@@ -10,7 +9,6 @@ public enum Currencies {
     Currencies(String [] names){
         this.names = names;
     }
-
     public  String getNameCurrency(int value){
         return names[value];
     }

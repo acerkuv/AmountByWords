@@ -1,6 +1,6 @@
 package ru.kuvaldin;
 
-public class Transformmer {
+public class TransFormer {
 
     public String[] AmountSegmentation(String amount){
         char[] AllAmount = amount.toCharArray();
@@ -14,7 +14,6 @@ public class Transformmer {
             if (!isNum(spell) & spell != ' ') {
                 currency += spell;
             }
-
         }
         AmountAndCurrency[0]= digitalAmount.toString();
         AmountAndCurrency[1] = currency;
@@ -22,7 +21,8 @@ public class Transformmer {
     }
     public int[] SharedAmountOnClass(String amount){
         int amountNum = Integer.parseInt(amount);
-        int[] SegmentedAmount = new int[4];
+        int quantityOfSegments = 4;
+        int[] SegmentedAmount = new int[quantityOfSegments];
         int hundredsThousands = amountNum/100000;
         int thousands = (amountNum - hundredsThousands * 100000) / 1000;
         int hundreds =( amountNum - hundredsThousands * 100000 - thousands * 1000) / 100;
