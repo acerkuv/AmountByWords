@@ -10,8 +10,9 @@ public class ConsoleInput {
         String typedData = scanner.nextLine();
         return typedData;
     }
+    static void print(String string){
+        System.out.println(string);
+    }
 
-//    private boolean checkTrueInput( String input){
-//
-//    }
+
 }

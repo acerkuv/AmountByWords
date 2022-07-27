@@ -5,17 +5,18 @@ import java.util.HashMap;
 
 public class WordGenerator {
     private KeywordDataMaker keywordDataMaker = new KeywordDataMaker();
-    private String[] EndOfThousands = new String[] {"тысяча", "тысячи", "тысяч"};
 
 
-    public String [] wordCollectionMaker(int[] amount){
+    public String [] wordCollectionMaker(int[] amount, String typeOfCurrency){
         keywordDataMaker.fillAllMaps();
-        String [] WordsCollected = new String[5];
+        String [] WordsCollected = new String[6];
         int numPos = 0;
         int dozen_thousands = 0;
+        int dozenEnd = 0;
         for (int digClass: amount){
-            boolean isDozenTrue = (digClass % 10 == 0) ? true: false;
+            boolean isDozenTrue = digClass % 10 == 0;
             if (numPos==0)   dozen_thousands = digClass;
+            if (numPos==3)   dozenEnd = digClass % 10;
             switch (numPos){
                 case 0 ->  WordsCollected[numPos] = keywordDataMaker.getHundredsThousandsMap().get(digClass);
                 case 1 ->  WordsCollected[numPos] = (digClass == 0 & dozen_thousands != 0)? "тысяч":
@@ -39,6 +40,18 @@ public class WordGenerator {
             }
             numPos++;
         }
+        //Выбор типв валюты
+        if (typeOfCurrency.equals(Currencies.USD.name())) {
+            if (dozenEnd == 0) WordsCollected[4] =Currencies.USD.getNameCurrency(2);
+            if (dozenEnd == 1) WordsCollected[4]=Currencies.USD.getNameCurrency(0);
+            if (dozenEnd > 1 & dozenEnd < 5) WordsCollected[4] =Currencies.USD.getNameCurrency(1);
+        }
+        if (typeOfCurrency.equals(Currencies.RUB.name())) {
+            if (dozenEnd == 0) WordsCollected[4] =Currencies.RUB.getNameCurrency(2);
+            if (dozenEnd == 1) WordsCollected[4]=Currencies.RUB.getNameCurrency(0);
+            if (dozenEnd > 1 & dozenEnd < 5) WordsCollected[4] =Currencies.RUB.getNameCurrency(1);
+        }
+
 
         return WordsCollected;
     }

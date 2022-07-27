@@ -9,7 +9,7 @@ public class TestMashine {
    protected void check(String test, String answer){
        String[] SharedInput = transformmer.AmountSegmentation(test);
        int[] digAmount = transformmer.SharedAmountOnClass(SharedInput[0]);
-       String [] TestWordAnswer = wordGenerator1.wordCollectionMaker(digAmount);
+       String [] TestWordAnswer = wordGenerator1.wordCollectionMaker(digAmount, SharedInput[1]);
        String finalAnswer = clueFinalPhrase(TestWordAnswer);
 
        System.out.println("Ввод: " + answer);
@@ -18,11 +18,11 @@ public class TestMashine {
        else System.out.println("Нет");
    }
    public   String clueFinalPhrase( String [] Words){
-       String phrase = "";
+       StringBuilder phrase = new StringBuilder();
        for (String word: Words){
-           if (word != null) phrase += word + " ";
+           if (word != null) phrase.append(word).append(" ");
        }
-       return phrase;
+       return phrase.toString();
    }
 
 

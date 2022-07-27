@@ -20,7 +20,7 @@ public class KeywordDataMaker {
     private String [] dozens = new String[] {"десять", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят",
             "восемьдесят",  "девяносто"};
 
-    private void fillMaps( String[] values, HashMap map){
+    private void fillMaps( String[] values, HashMap <Integer,String> map){
         int num = 1;
         for (String name: values){
             map.put(num, name);

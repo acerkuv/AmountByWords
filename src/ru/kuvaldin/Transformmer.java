@@ -5,18 +5,18 @@ public class Transformmer {
     public String[] AmountSegmentation(String amount){
         char[] AllAmount = amount.toCharArray();
         String [] AmountAndCurrency = new String[2];
-        String digitalAmount = "";
+        StringBuilder digitalAmount = new StringBuilder();
         String currency = "";
         for (char spell: AllAmount){
             if(isNum(spell)) {
-                digitalAmount += spell;
+                digitalAmount.append(spell);
             }
             if (!isNum(spell) & spell != ' ') {
                 currency += spell;
             }
 
         }
-        AmountAndCurrency[0]= digitalAmount;
+        AmountAndCurrency[0]= digitalAmount.toString();
         AmountAndCurrency[1] = currency;
         return AmountAndCurrency;
     }
